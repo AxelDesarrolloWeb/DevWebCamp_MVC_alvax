@@ -37,8 +37,9 @@
                                 </i>
                             </a>
 
-                            <form action="" class="table__formulario">
-                                <button class="table__accion table__accion--eliminar" type="submit">
+                            <form action="/admin/ponentes/eliminar" method="POST" class="table__formulario">
+                                <input type="hidden" name="id" value="<?php echo $ponente->id; ?>">    
+                            <button class="table__accion table__accion--eliminar" type="submit">
                                     <i class="fa-solid fa-circle-xmark"></i>
                                     Eliminar
                                 </button>
@@ -55,3 +56,7 @@
 
     <?php } ?>
 </div>
+
+<?php 
+    echo $paginacion;
+?>

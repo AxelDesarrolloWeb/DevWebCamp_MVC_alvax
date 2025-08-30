@@ -2,6 +2,7 @@
 
 namespace Controllers;
 
+use Classes\Paginacion;
 use MVC\Router;
 use Model\Ponente;
 use Intervention\Image\ImageManagerStatic as Image;
@@ -11,13 +12,35 @@ class PonentesController
 
     public static function index(Router $router)
     {
+        $pagina_actual = $_GET['page'];
+        $pagina_actual = filter_var($pagina_actual, FILTER_VALIDATE_INT);
 
-        $ponentes  = Ponente::all();
+        if (!$pagina_actual || $pagina_actual < 1) {
+            header('Location: /admin/ponentes?page=1');
+        }
+
+        // $pagina_actual = 1;
+        $registros_por_pagina = 10;
+        $total = Ponente::total();
+        $paginacion = new Paginacion($pagina_actual, $registros_por_pagina, $total);
+
+        if ($paginacion->total_paginas() < $pagina_actual) {
+            header('Location: /admin/ponentes?page=1');
+        }
+
+        $ponentes  = Ponente::paginar($registros_por_pagina, $paginacion->offset());
+
+        // is_auth();
+        // is_admin();
+        
+        if (!is_admin()) {
+            header('Location: /login');
+        }
         // $ponentes  = []; // Marca "No hay Ponentes Aún
         $router->render('admin/ponentes/index', [
-
             'titulo' => 'Ponentes / Conferencistas',
-            'ponentes' => $ponentes
+            'ponentes' => $ponentes,
+            'paginacion' => $paginacion->paginacion()
         ]);
     }
 
@@ -25,6 +48,11 @@ class PonentesController
     {
         $alertas = [];
         $ponente = new Ponente;
+        // is_auth();
+        is_admin();
+        if (!is_admin()) {
+            header('Location: /login');
+        }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -79,6 +107,11 @@ class PonentesController
     {
         $alertas = [];
         $ponente = '';
+        // is_auth();
+        is_admin();
+        if (!is_admin()) {
+            header('Location: /login');
+        }
 
         //Validar el ID
         $id = $_GET['id'];
@@ -145,5 +178,26 @@ class PonentesController
             'ponente' => $ponente ?? null,
             'redes' => json_decode($ponente->redes)
         ]);
+    }
+
+    public static function eliminar(Router $router)
+    {
+        // is_auth();
+        is_admin();
+        if (!is_admin()) {
+            header('Location: /login');
+        }
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'];
+            $ponente = Ponente::find($id);
+            if (!isset($ponente)) {
+                header('Location: /admin/ponentes');
+            }
+
+            $resultado = $ponente->eliminar();
+            if ($resultado) {
+                header('Location: /admin/ponentes');
+            }
+        }
     }
 }
