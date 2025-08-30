@@ -27,7 +27,7 @@
                             <?php echo $ponente->nombre . " " . $ponente->apellido; ?>
                         </td>
                         <td class="table__td">
-                            <?php echo $ponente->cuidad . ", " . $ponente->pais; ?>
+                            <?php echo $ponente->ciudad . ", " . $ponente->pais; ?>
                         </td>
 
                         <td class="table__td--acciones">

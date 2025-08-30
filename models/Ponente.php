@@ -4,12 +4,12 @@ namespace Model;
 
 class Ponente extends ActiveRecord {
     protected static $tabla = 'ponentes';
-    protected static $columnasDB = ['id', 'nombre', 'apellido', 'cuidad', 'pais', 'imagen', 'tags', 'redes'];
+    protected static $columnasDB = ['id', 'nombre', 'apellido', 'ciudad', 'pais', 'imagen', 'tags', 'redes'];
 
     public $id;
     public $nombre;
     public $apellido;
-    public $cuidad;
+    public $ciudad;
     public $pais;
     public $imagen;
     public $tags;
@@ -20,7 +20,7 @@ class Ponente extends ActiveRecord {
         $this->id = $args['id'] ?? null;
         $this->nombre = $args['nombre'] ?? '';
         $this->apellido = $args['apellido'] ?? '';
-        $this->cuidad = $args['cuidad'] ?? '';
+        $this->ciudad = $args['cuidad'] ?? '';
         $this->pais = $args['pais'] ?? '';
         $this->imagen = $args['imagen'] ?? '';
         $this->tags = $args['tags'] ?? '';
