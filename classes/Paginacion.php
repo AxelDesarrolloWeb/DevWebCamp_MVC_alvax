@@ -22,28 +22,29 @@ class Paginacion
 
     public function total_paginas()
     {
-        return ceil($this->total_registros / $this->registros_por_pagina);
+        $total = ceil($this->total_registros / $this->registros_por_pagina);
+        $total == 0 ? $total = 1 : $total = $total;
+        return $total;
+
     }
 
     public function pagina_anterior()
     {
         $anterior = $this->pagina_actual - 1;
         return ($anterior > 0) ? $anterior : false;
-        // return $anterior;
     }
 
     public function pagina_siguiente()
     {
         $siguiente = $this->pagina_actual + 1;
         return ($siguiente <= $this->total_paginas()) ? $siguiente : false;
-        // return $siguiente;
     }
 
     public function enlace_anterior()
     {
         $html = '';
         if ($this->pagina_anterior()) {
-            $html .= "<a class=\"paginacion__enlace paginacion__enlace--texto\" href=\"?page={$this->pagina_anterior()}\">&laquo; </a>";
+            $html .= "<a class=\"paginacion__enlace paginacion__enlace--texto\" href=\"?page={$this->pagina_anterior()}\">&laquo; Anterior </a>";
         }
         return $html;
     }
@@ -57,28 +58,29 @@ class Paginacion
         return $html;
     }
 
-    public function numeros_paginas()
-    {
+    public function numeros_paginas() {
         $html = '';
-        for ($i = 1; $i <= $this->total_paginas(); $i++) {
-            if ($i === $this->pagina_actual) {
+        for($i = 1; $i <= $this->total_paginas(); $i++) {
+            if($i === $this->pagina_actual ) {
                 $html .= "<span class=\"paginacion__enlace paginacion__enlace--actual \">{$i}</span>";
             } else {
-                $html .= "<a class=\"paginacion__enlace paginacion__enlace--numero \" href=\"\">{$i}</a>";
+                $html .= "<a class=\"paginacion__enlace paginacion__enlace--numero \" href=\"?page={$i}\">{$i}</a>";
             }
         }
+
+        return $html;
     }
 
-    public function paginacion()
-    {
+   public function paginacion() {
         $html = '';
-        if ($this->total_registros > 1) {
-            $html .= '<div class="paginacion>';
+        if($this->total_registros > 1) {
+            $html .= '<div class="paginacion">';
             $html .= $this->enlace_anterior();
             $html .= $this->numeros_paginas();
             $html .= $this->enlace_siguiente();
             $html .= '</div>';
         }
+
         return $html;
     }
 }

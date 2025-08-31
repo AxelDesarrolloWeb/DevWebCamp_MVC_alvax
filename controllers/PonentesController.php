@@ -20,7 +20,7 @@ class PonentesController
         }
 
         // $pagina_actual = 1;
-        $registros_por_pagina = 10;
+        $registros_por_pagina = 5;
         $total = Ponente::total();
         $paginacion = new Paginacion($pagina_actual, $registros_por_pagina, $total);
 
@@ -36,7 +36,7 @@ class PonentesController
         if (!is_admin()) {
             header('Location: /login');
         }
-        // $ponentes  = []; // Marca "No hay Ponentes Aún
+        // $ponentes  = []; // Marca: "No hay Ponentes Aún
         $router->render('admin/ponentes/index', [
             'titulo' => 'Ponentes / Conferencistas',
             'ponentes' => $ponentes,
