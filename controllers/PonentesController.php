@@ -7,11 +7,13 @@ use MVC\Router;
 use Model\Ponente;
 use Intervention\Image\ImageManagerStatic as Image;
 
+error_reporting(E_ALL ^ E_DEPRECATED);
 class PonentesController
 {
 
     public static function index(Router $router)
     {
+        
         $pagina_actual = $_GET['page'];
         $pagina_actual = filter_var($pagina_actual, FILTER_VALIDATE_INT);
 
@@ -49,7 +51,7 @@ class PonentesController
         $alertas = [];
         $ponente = new Ponente;
         // is_auth();
-        is_admin();
+        // is_admin();
         if (!is_admin()) {
             header('Location: /login');
         }
@@ -108,7 +110,6 @@ class PonentesController
         $alertas = [];
         $ponente = '';
         // is_auth();
-        is_admin();
         if (!is_admin()) {
             header('Location: /login');
         }
@@ -127,7 +128,7 @@ class PonentesController
             header('Location: /admin/ponentes');
         }
 
-        // $ponente->imagen_actual = $ponente->imagen;
+        $ponente->imagen_actual = $ponente->imagen;
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             //Leer Imagen
@@ -183,7 +184,7 @@ class PonentesController
     public static function eliminar(Router $router)
     {
         // is_auth();
-        is_admin();
+        // is_admin();
         if (!is_admin()) {
             header('Location: /login');
         }

@@ -2,6 +2,7 @@
 
 require_once __DIR__ . '/../includes/app.php';
 
+use Controllers\APIEventos;
 use MVC\Router;
 use Controllers\AuthController;
 use Controllers\DashboardController;
@@ -11,7 +12,6 @@ use Controllers\RegistradosController;
 use Controllers\RegalosController;
 
 $router = new Router();
-
 
 // Login
 $router->get('/login', [AuthController::class, 'login']);
@@ -51,8 +51,10 @@ $router->get('/admin/eventos/editar', [EventosController::class, 'editar']);
 $router->post('/admin/eventos/editar', [EventosController::class, 'editar']);
 $router->post('/admin/eventos/eliminar', [EventosController::class, 'eliminar']);
 
+$router->get('/api/eventos-horario', [APIEventos::class, 'index']);
+$router->get('/api/ponentes', [APIEventos::class, 'index']);
+
 $router->get('/admin/registrados', [RegistradosController::class, 'index']);
 $router->get('/admin/regalos', [RegalosController::class, 'index']);
-
 
 $router->comprobarRutas();
