@@ -13,7 +13,7 @@ class PonentesController
 
     public static function index(Router $router)
     {
-        
+
         $pagina_actual = $_GET['page'];
         $pagina_actual = filter_var($pagina_actual, FILTER_VALIDATE_INT);
 
@@ -34,7 +34,7 @@ class PonentesController
 
         // is_auth();
         // is_admin();
-        
+
         if (!is_admin()) {
             header('Location: /login');
         }
@@ -48,13 +48,14 @@ class PonentesController
 
     public static function crear(Router $router)
     {
+        if (!is_admin()) {
+            header('Location: /login');
+        }
+
         $alertas = [];
         $ponente = new Ponente;
         // is_auth();
         // is_admin();
-        if (!is_admin()) {
-            header('Location: /login');
-        }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
