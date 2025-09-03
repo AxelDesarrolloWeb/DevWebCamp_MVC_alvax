@@ -6,7 +6,7 @@
             </h3>
 
             <p class="footer__texto">
-                DevWebCamp es una conferencia para desarrolladores de todos los niveles, se a cabo de forma presencial y en línea.
+                DevWebCamp es una conferencia para desarrolladores de todos los niveles, se da a cabo de forma presencial y en línea.
             </p>
         </div>
 

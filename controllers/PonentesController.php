@@ -14,6 +14,10 @@ class PonentesController
     public static function index(Router $router)
     {
 
+        if (!is_admin()) {
+            header('Location: /login');
+        }
+
         $pagina_actual = $_GET['page'];
         $pagina_actual = filter_var($pagina_actual, FILTER_VALIDATE_INT);
 
@@ -32,12 +36,6 @@ class PonentesController
 
         $ponentes  = Ponente::paginar($registros_por_pagina, $paginacion->offset());
 
-        // is_auth();
-        // is_admin();
-
-        if (!is_admin()) {
-            header('Location: /login');
-        }
         // $ponentes  = []; // Marca: "No hay Ponentes Aún
         $router->render('admin/ponentes/index', [
             'titulo' => 'Ponentes / Conferencistas',
@@ -48,16 +46,13 @@ class PonentesController
 
     public static function crear(Router $router)
     {
-        if (!is_admin()) {
-            header('Location: /login');
-        }
-
         $alertas = [];
         $ponente = new Ponente;
-        // is_auth();
-        // is_admin();
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (!is_admin()) {
+                header('Location: /login');
+            }
 
             //Leer Imagen
             if (!empty($_FILES['imagen']['tmp_name'])) {
@@ -110,11 +105,6 @@ class PonentesController
     {
         $alertas = [];
         $ponente = '';
-        // is_auth();
-        if (!is_admin()) {
-            header('Location: /login');
-        }
-
         //Validar el ID
         $id = $_GET['id'];
         $id = filter_var($id, FILTER_VALIDATE_INT);
@@ -132,6 +122,9 @@ class PonentesController
         $ponente->imagen_actual = $ponente->imagen;
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (!is_admin()) {
+                header('Location: /login');
+            }
             //Leer Imagen
             if (!empty($_FILES['imagen']['tmp_name'])) {
                 // Procesar versiones de imágenes
@@ -184,12 +177,11 @@ class PonentesController
 
     public static function eliminar(Router $router)
     {
-        // is_auth();
-        // is_admin();
-        if (!is_admin()) {
-            header('Location: /login');
-        }
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (!is_admin()) {
+                header('Location: /login');
+            }
             $id = $_POST['id'];
             $ponente = Ponente::find($id);
             if (!isset($ponente)) {
