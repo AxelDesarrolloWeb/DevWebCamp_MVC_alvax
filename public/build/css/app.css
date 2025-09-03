@@ -457,6 +457,12 @@ h3 {
 .eventos--workshops .eventos__heading {
   color: #00c8c2;
 }
+.eventos--workshops .evento__informacion {
+  background-color: #00c8c2;
+}
+.eventos--workshops .evento__informacion:hover {
+  background-color: rgb(0, 149, 144.53);
+}
 .eventos .swiper-button-next,
 .eventos .swiper-button-prev {
   color: #64748b;
@@ -778,6 +784,7 @@ h3 {
   color: #FFFFFF;
   text-align: center;
   margin-bottom: 2rem;
+  white-space: nowrap;
 }
 @media (min-width: 1024px) {
   .barra__logo {
@@ -789,10 +796,12 @@ h3 {
 .navegacion {
   display: flex;
   flex-direction: column;
+  margin-bottom: 1rem;
 }
 @media (min-width: 1024px) {
   .navegacion {
     flex-direction: row;
+    margin-bottom: unset;
   }
 }
 .navegacion__enlace {
@@ -802,10 +811,16 @@ h3 {
   font-weight: 900;
   text-transform: uppercase;
   text-align: center;
+  margin: 0.2rem;
 }
 .navegacion__enlace--actual, .navegacion__enlace:hover {
   background-color: #FFFFFF;
   color: #007df4;
+}
+@media (min-width: 768px) {
+  .navegacion__enlace {
+    margin: unset;
+  }
 }
 
 .footer {
@@ -829,6 +844,7 @@ h3 {
   color: #FFFFFF;
   text-align: center;
   margin-bottom: 2rem;
+  white-space: nowrap;
 }
 @media (min-width: 1024px) {
   .footer__logo {
@@ -937,6 +953,7 @@ h3 {
   color: #FFFFFF;
   text-align: center;
   margin-bottom: 2rem;
+  white-space: nowrap;
 }
 @media (min-width: 1024px) {
   .dashboard__logo {
