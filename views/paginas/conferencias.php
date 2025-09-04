@@ -16,8 +16,8 @@
             </div>
 
 
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
+            <!-- <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div> -->
         </div>
 
         <p class="eventos__fecha">Sábado 6 de Octubre</p>
@@ -32,8 +32,8 @@
             </div>
 
 
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
+            <!-- <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div> -->
         </div>
 
     </div>
@@ -53,8 +53,8 @@
             </div>
 
 
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
+            <!-- <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div> -->
         </div>
 
         <p class="eventos__fecha">Sábado 6 de Octubre</p>
@@ -69,8 +69,8 @@
             </div>
 
 
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
+            <!-- <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div> -->
         </div>
 
     </div>

@@ -1,7 +1,7 @@
 <?php 
 
 namespace Model;
-
+error_reporting(E_ALL ^ E_DEPRECATED);
 class Ponente extends ActiveRecord {
     protected static $tabla = 'ponentes';
     protected static $columnasDB = ['id', 'nombre', 'apellido', 'ciudad', 'pais', 'imagen', 'tags', 'redes'];
