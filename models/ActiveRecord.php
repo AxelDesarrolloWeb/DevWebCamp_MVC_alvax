@@ -1,5 +1,8 @@
 <?php
+
 namespace Model;
+
+// error_reporting(E_ALL ^ E_DEPRECATED);
 class ActiveRecord {
 
     // Base DE DATOS
@@ -168,7 +171,7 @@ class ActiveRecord {
     public static function total($columna = '', $valor = '') {
         $query = "SELECT COUNT(*) FROM " . static::$tabla;
         if($columna) {
-            $query .= " WHERE ${columna} = ${valor}";
+            $query .= " WHERE {$columna} = {$valor}";
         }
         $resultado = self::$db->query($query);
         $total = $resultado->fetch_array();
