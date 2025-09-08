@@ -449,7 +449,7 @@ h3 {
 }
 .paquete__precio {
   font-size: 3rem;
-  margin: 3rem 0 0 0;
+  margin: 3rem 0;
   color: #007df4;
   font-weight: 900;
   text-align: center;
@@ -704,13 +704,14 @@ h3 {
   width: min(100% - 5rem, 65rem);
   margin: 0 auto;
   padding: 6rem;
+  border-radius: 2rem;
   color: #FFFFFF;
   position: relative;
 }
 .boleto::before, .boleto::after {
   position: absolute;
-  background-color: #FFFFFF;
   content: "";
+  background-color: #FFFFFF;
   width: 5rem;
   height: 5rem;
   top: calc(50% - 2.5rem);
@@ -724,8 +725,8 @@ h3 {
   right: 0;
 }
 .boleto--presencial {
-  background-color: hsl(209, 100%, 47%);
-  background-image: radial-gradient(at 100% 0%, hsl(178, 100%, 39%) 0px, transparent 50%), radial-gradient(at 2% 94%, hsl(189, 100%, 56%) 0px, transparent 50%), radial-gradient(at 84% 85%, hsl(209, 100%, 47%) 0px, transparent 50%), radial-gradient(at 99% 1%, hsl(189, 100%, 56%) 0px, transparent 50%), radial-gradient(at 79% 73%, hsl(209, 100%, 47%) 0px, transparent 50%), radial-gradient(at 80% 100%, hsl(189, 100%, 56%) 0px, transparent 50%), radial-gradient(at 8% 11%, hsl(209, 100%, 47%) 0px, transparent 50%);
+  background-color: hsl(178, 100%, 39%);
+  background-image: radial-gradient(at 40% 20%, hsl(209, 100%, 47%) 0px, transparent 50%), radial-gradient(at 80% 0%, hsl(178, 100%, 39%) 0px, transparent 50%), radial-gradient(at 69% 82%, hsl(209, 100%, 47%) 0px, transparent 50%), radial-gradient(at 26% 91%, hsl(178, 100%, 39%) 0px, transparent 50%), radial-gradient(at 0% 100%, hsl(209, 100%, 47%) 0px, transparent 50%), radial-gradient(at 27% 22%, hsl(178, 100%, 39%) 0px, transparent 50%), radial-gradient(at 0% 0%, hsl(209, 100%, 47%) 0px, transparent 50%);
 }
 .boleto--virtual {
   background-color: #00c8c2;
@@ -779,7 +780,7 @@ h3 {
 }
 .boleto--acceso {
   width: 30rem;
-  height: 30rem;
+  height: 50rem;
   padding: 10rem 3rem;
 }
 @media (min-width: 768px) {
@@ -787,6 +788,9 @@ h3 {
     width: 60rem;
     height: 30rem;
     padding: 6rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 }
 .boleto--acceso .boleto__logo {
@@ -808,6 +812,15 @@ h3 {
   left: 0;
   width: 100%;
 }
+@media (min-width: 768px) {
+  .boleto--acceso .boleto__codigo {
+    rotate: 90deg;
+    transform-origin: 0 0;
+    top: 0;
+    left: calc(100% - 5rem);
+    width: 30rem;
+  }
+}
 .boleto::before {
   clip-path: circle(50% at 50% 25%);
   left: calc(50% - 2.5rem);
@@ -817,6 +830,7 @@ h3 {
   .boleto::before {
     clip-path: circle(50% at 25% 50%);
     left: 0;
+    top: calc(50% - 2.5rem);
   }
 }
 .boleto::after {
@@ -827,7 +841,8 @@ h3 {
 @media (min-width: 768px) {
   .boleto::after {
     clip-path: circle(50% at 75% 50%);
-    right: 0;
+    left: calc(100% - 5rem);
+    top: calc(50% - 2.5rem);
   }
 }
 

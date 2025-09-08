@@ -4,9 +4,6 @@
     <div class="evento__informacion">
         <h4 class="evento__nombre"><?php echo $evento->nombre; ?></h4>
 
-        <!-- <div class="evento__introduccion">
-                            </div> -->
-
         <p class="evento__introduccion"><?php echo $evento->descripcion; ?></p>
 
         <div class="evento__autor-info">
