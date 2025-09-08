@@ -17,10 +17,11 @@ class PonentesController
         if (!is_admin()) {
             header('Location: /login');
         }
-
+        
         $pagina_actual = $_GET['page'];
         $pagina_actual = filter_var($pagina_actual, FILTER_VALIDATE_INT);
-
+        
+        
         if (!$pagina_actual || $pagina_actual < 1) {
             header('Location: /admin/ponentes?page=1');
         }

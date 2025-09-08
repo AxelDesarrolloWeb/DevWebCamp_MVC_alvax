@@ -176,8 +176,12 @@ class RegistroController {
             }
         }
 
-        $regalos = Regalo::all();
+        $regalos = Regalo::all('ASC');
 
+        // Manejando el registro mediante POST
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            debuguear('Desde método POST');
+        }
 
         $router->render('registro/conferencias', [
             'titulo' => 'Finalizar Registro',
@@ -185,5 +189,4 @@ class RegistroController {
             'regalos' => $regalos
         ]);
     }
-
 }
