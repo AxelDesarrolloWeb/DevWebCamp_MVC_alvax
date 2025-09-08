@@ -176,10 +176,13 @@ class RegistroController {
             }
         }
 
+        $regalos = Regalo::all();
+
 
         $router->render('registro/conferencias', [
             'titulo' => 'Finalizar Registro',
-            'eventos' => $eventos_formateados
+            'eventos' => $eventos_formateados,
+            'regalos' => $regalos
         ]);
     }
 
