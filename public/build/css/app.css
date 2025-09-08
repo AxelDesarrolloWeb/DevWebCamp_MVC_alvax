@@ -1435,6 +1435,10 @@ h3 {
   width: min(95%, 60rem);
   margin: 0 auto;
 }
+.dashboard__grafica {
+  width: min(95%, 60rem);
+  margin: 0 auto;
+}
 
 .table {
   width: 100%;
@@ -1568,7 +1572,7 @@ h3 {
 }
 
 .bloque {
-  padding: 2rem;
+  padding: 3rem;
   color: #FFFFFF;
   border-radius: 1rem;
 }
@@ -1577,6 +1581,12 @@ h3 {
 }
 .bloque:nth-child(2) {
   background-image: linear-gradient(to left top, #A855F7, rgb(205.3904494382, 158.0617977528, 250.4382022472));
+}
+.bloque:nth-child(3) {
+  background-image: linear-gradient(to left top, #4f8109, rgb(122.7934782609, 200.5108695652, 13.9891304348));
+}
+.bloque:nth-child(4) {
+  background-image: linear-gradient(to left top, #17769E, rgb(34.5856353591, 167.1132596685, 222.9143646409));
 }
 .bloque__heading {
   margin: 3rem;

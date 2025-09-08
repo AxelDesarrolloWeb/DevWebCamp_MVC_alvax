@@ -2,24 +2,24 @@
 
 namespace Controllers;
 use Model\Regalo;
+use Model\Registro;
 
 class APIRegalos {
 
     public static function index() {
-        $regalos = Regalo::all();
-        echo json_encode($regalos);
-    }
 
-    public static function regalo() {
-        $id = $_GET['id'];
-        $id = filter_var($id, FILTER_VALIDATE_INT);
-
-        if (!$id || $id < 1) {
+        if (!is_admin()) {
             echo json_encode([]);
             return;
         }
-
-        $regalo = Regalo::find($id);
-        echo json_encode($regalo, JSON_UNESCAPED_SLASHES);
+        
+        $regalos = Regalo::all();
+        
+        foreach($regalos as $regalo) {
+            $regalo->total = Registro::totalArray(['regalo_id' => $regalo_id, 'paquete_id' => "1" ]);
+        }
+        echo json_encode($regalos);
+        return;
     }
+
 }
