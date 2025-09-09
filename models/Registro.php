@@ -14,7 +14,7 @@ class Registro extends ActiveRecord {
         $this->token = $args['token'] ?? '';
         $this->usuario_id = $args['usuario_id'] ?? '';
         $this->pago_id = $args['pago_id'] ?? '';
-        $this->regalo_id = $args['regalo_id'] ?? '';
+        $this->regalo_id = $args['regalo_id'] ?? 1;
     }
 
 }

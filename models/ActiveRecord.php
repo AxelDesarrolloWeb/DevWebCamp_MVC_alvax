@@ -1,8 +1,6 @@
 <?php
 
 namespace Model;
-
-// error_reporting(E_ALL ^ E_DEPRECATED);
 class ActiveRecord {
 
     // Base DE DATOS
@@ -127,13 +125,12 @@ class ActiveRecord {
         return $resultado;
     }
 
-    // Paginar los Registros
+    // Paginar los registros
     public static function paginar($por_pagina, $offset) {
-        $query = "SELECT * FROM " . static::$tabla . " ORDER BY id DESC LIMIT {$por_pagina} OFFSET {$offset}";
+        $query = "SELECT * FROM " . static::$tabla . " ORDER BY id DESC LIMIT {$por_pagina} OFFSET {$offset} " ;
         $resultado = self::consultarSQL($query);
         return $resultado;
     }
-    
 
     // Busqueda Where con Columna 
     public static function where($columna, $valor) {
@@ -144,34 +141,29 @@ class ActiveRecord {
 
     // Retornar los registros por un orden
     public static function ordenar($columna, $orden) {
-        $query = "SELECT * FROM " . static::$tabla . " ORDER BY {$columna} {$orden} ";
+        $query = "SELECT * FROM " . static::$tabla . " ORDER BY {$columna} {$orden} "; 
+        $resultado = self::consultarSQL($query);
+        return $resultado;
+    }
+    // Retornar por orden y con un limite
+    public static function ordenarLimite($columna, $orden, $limite) {
+        $query = "SELECT * FROM " . static::$tabla . " ORDER BY {$columna} {$orden} LIMIT {$limite} "; 
         $resultado = self::consultarSQL($query);
         return $resultado;
     }
 
-    // Retornar por orden y por un límite
-    public static function ordenarLimite($columna, $limite) {
-        $query = "SELECT * FROM " . static::$tabla . " ORDER BY {$columna} LIMIT {$limite} ";
-        $resultado = self::consultarSQL($query);
-        return $resultado;
-    }
-
-    // Busqueda Where con Múltiples opciones 
+    // Busqueda Where con Múltiples opciones
     public static function whereArray($array = []) {
         $query = "SELECT * FROM " . static::$tabla . " WHERE ";
         foreach($array as $key => $value) {
-            if ($key == array_key_last($array)) {
-                # code...
-                $query .= "'{$key}' = '{$value}'";
+            if($key == array_key_last($array)) {
+                $query .= " {$key} = '{$value}'";
             } else {
-
-                $query .= " '{$key}' = '{$value}' AND ";
+                $query .= " {$key} = '{$value}' AND ";
             }
         }
-        // echo array_key_last($array);
-        // echo $query;
         $resultado = self::consultarSQL($query);
-        return $resultado ;
+        return $resultado;
     }
 
     // Traer un total de registros
@@ -185,22 +177,20 @@ class ActiveRecord {
 
         return array_shift($total);
     }
-    
-    // Total de registros con un array where
-    public static function totalArray($array = []) {
-       $query = "SELECT COUNT(*) FROM " . static::$tabla . " WHERE ";
-        foreach($array as $key => $value) {
-            if ($key == array_key_last($array)) {
-                # code...
-                $query .= " '{$key}' = '{$value}' ";
-            } else {
 
-                $query .= " '{$key}' = '{$value}' AND ";
+    // Total de Registros con un Array Where
+    public static function totalArray($array = []) {
+        $query = "SELECT COUNT(*) FROM " . static::$tabla . " WHERE ";
+        foreach($array as $key => $value) {
+            if($key == array_key_last($array)) {
+                $query .= " {$key} = '{$value}' ";
+            } else {
+                $query .= " {$key} = '{$value}' AND ";
             }
         }
         $resultado = self::$db->query($query);
         $total = $resultado->fetch_array();
-        return array_shift($total) ;
+        return array_shift($total);
     }
 
     // crea un nuevo registro
