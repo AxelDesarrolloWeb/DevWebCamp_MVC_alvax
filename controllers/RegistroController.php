@@ -155,12 +155,12 @@ class RegistroController
         if (isset($registro) && $registro->paquete_id === "2") {
             header('Location: /boleto?id=' . urlencode($registro->token));
             return;
-        }
+        } 
 
-        if ($registro->paquete_id !== "1") {
-            header('Location: /');
-            return;
-        }
+        // if ($registro->paquete_id !== "1") {
+        //     header('Location: /');
+        //     return;
+        // }
 
         $eventos = Evento::ordenar('hora_id', 'ASC');
 
